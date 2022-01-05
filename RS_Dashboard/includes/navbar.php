@@ -78,8 +78,17 @@ if (!isset($_SESSION['id'])) {
             <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
+
+                <?php
+
+                include '../config.php';
+                $query = "SELECT * FROM reservation where `status`='Checked in'";
+                $query_run = mysqli_query($conn, $query);
+                $check_db = mysqli_num_rows($query_run) > 0 ;
+                $count = mysqli_num_rows($query_run);
+                ?>
                 <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">0</span>
+                <span class="badge badge-danger badge-counter"><?php echo $count; ?></span>
               </a>
               <!-- Dropdown - Alerts -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
@@ -97,9 +106,8 @@ if (!isset($_SESSION['id'])) {
                     </div>
                   </div>
                   <div>
-                    <div class="small text-gray-500">Court date: </div>
-                    The license card<b> ''</b> is in the court for violating traffic rule <b>''</b> on <b></b><br>
-                    Fine Number: <b></b>
+                    <div class="small text-gray-500">New Customers Checked in </div>
+                    There are <?php echo $count; ?> new customers checked in and are waiting to get there rooms  <b></b>
                   </div>
                 </a>
                 

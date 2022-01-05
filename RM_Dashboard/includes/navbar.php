@@ -33,6 +33,12 @@ if (!isset($_SESSION['id'])) {
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 
+<li class="nav-item active">
+  <a class="nav-link" href="view_report.php">
+    <i class="fas fa-fw fa-paperclip"></i>
+    <span>View Report</span></a>
+</li>
+
 <!-- Sidebar Toggler (Sidebar) -->
 <div class="text-center d-none d-md-inline">
   <button class="rounded-circle border-0" id="sidebarToggle"></button>
