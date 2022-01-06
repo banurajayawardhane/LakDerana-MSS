@@ -34,6 +34,17 @@ if (isset($_POST['submit'])) {
 			?><div class="alert alert-danger alert-dismissible fade show" role="alert" id="display_error"><strong>Error !</strong> <?php echo "ID or Password is Incorrect.";?></div><?php
 		}
 		break;
+		case "BM":
+			$sql = "SELECT * FROM users WHERE id='$email' AND pass='$password'";
+			$result = mysqli_query($conn, $sql);
+		if ($result->num_rows > 0) {
+			$row = mysqli_fetch_assoc($result);
+			$_SESSION['id'] = $row['id'];
+			header("Location: BM_Dashboard\index.php");
+		} else {
+			?><div class="alert alert-danger alert-dismissible fade show" role="alert" id="display_error"><strong>Error !</strong> <?php echo "ID or Password is Incorrect.";?></div><?php
+		}
+		break;
 		case "RM":
 			$sql = "SELECT * FROM users WHERE id='$email' AND pass='$password'";
 			$result = mysqli_query($conn, $sql);
