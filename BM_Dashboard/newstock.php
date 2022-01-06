@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
 			}
 		} 
         else 
-        {
+        { 
 			?><div class="alert alert-warning alert-dismissible fade show" role="alert"><strong>Warning !</strong> <?php echo "Stock ID already exist.";?></div><?php
 		}
 }
@@ -102,6 +102,62 @@ if (isset($_POST['submit'])) {
 
                         </div>
                         </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 mt-5">
+                <div class="card border-left-primary shadow">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Current Stocks</h6>
+                    </div>
+                    <div class="card-body">
+                        <?php
+                            $query = "SELECT * FROM bar_stocks";
+                            $query_run = mysqli_query($conn, $query);    
+                        ?>
+                        <div id="tabel">
+                            <table class="table table-bordered dataTable">
+                                <thead>
+                                    <th scope="col">Stock ID</th>
+                                    <th scope="col">Item Name</th>
+                                    <th scope="col">Item Description</th>
+                                    <th scope="col">Item Quntity</th>
+                                    <th scope="col">Item Quntity</th>
+                                    <th scope="col">Selling Price</th>
+                                    <th scope="col">Date</th>
+                                </thead>
+                                <?php
+                                    if($query_run)
+                                    {
+                                        foreach($query_run as $row)
+                                        {
+                                    ?>
+                                    
+                                    <tbody>
+                                        <td><?php echo $row['stock_id'];?></td>
+                                        <td><?php  echo $row['item_name'];?></td>
+                                        <td><?php  echo $row['item_description'];?></td>
+                                        <td><?php  echo $row['item_quntity'];?></td>
+                                        <td><?php echo $row['buying_price'];?></td>
+                                        <td><?php echo $row['selling_price'];?></td>
+                                        <td><?php echo $row['date'];?></td>
+                                    </tbody>
+
+                                    <?php
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        echo "No data";
+                                    }
+
+                                    ?>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
