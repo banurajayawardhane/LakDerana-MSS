@@ -33,6 +33,11 @@ if (!isset($_SESSION['id'])) {
     <i class="fas fa-fw fa-tachometer-alt"></i>
     <span>Add New Stock</span></a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="neworder.php">
+    <i class="fas fa-fw fa-tachometer-alt"></i>
+    <span>New Order</span></a>
+</li>
 
 
 <!-- Divider -->
